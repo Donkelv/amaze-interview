@@ -6,8 +6,9 @@ class CustomBorderedButton extends StatelessWidget {
   final Color? borderColor;
   final String? text;
   final Color? textCol;
+  final VoidCallback? onPressed;
   const CustomBorderedButton(
-      {Key? key, this.color, this.borderColor, this.text, this.textCol})
+      {Key? key, this.color, this.borderColor, this.text, this.textCol, this.onPressed})
       : super(key: key);
 
   @override
@@ -26,7 +27,7 @@ class CustomBorderedButton extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           borderRadius: BorderRadius.circular(10.0),
-          onTap: () {},
+          onTap: onPressed,
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: Center(

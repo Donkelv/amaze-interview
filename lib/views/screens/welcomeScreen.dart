@@ -1,6 +1,7 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
+import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/borderedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,10 +18,10 @@ class WelcomeScreen extends StatelessWidget {
       value: const SystemUiOverlayStyle(
         // For Android.
         // Use [light] for white status bar and [dark] for black status bar.
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
         // For iOS.
         // Use [dark] for white status bar and [light] for black status bar.
-        statusBarBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
       ),
       child: Scaffold(
@@ -74,6 +75,9 @@ class WelcomeScreen extends StatelessWidget {
                       borderColor: whiteColor,
                       text: "Login",
                       textCol: whiteColor,
+                      onPressed: () {
+                        
+                      },
                     ),
                     SizedBox(
                       height: 15.0.h,
@@ -83,6 +87,9 @@ class WelcomeScreen extends StatelessWidget {
                       borderColor: primaryColorShade1,
                       text: "Create an Account",
                       textCol: primaryColorShade1,
+                      onPressed: () {
+                        Navigator.pushNamed(context, RouteGenerator.signUp);
+                      },
                     )
                   ],
                 ),
