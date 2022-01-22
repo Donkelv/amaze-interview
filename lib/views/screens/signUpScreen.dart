@@ -1,7 +1,9 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
+import 'package:amaze/constants/telConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
+import 'package:amaze/views/widgets/borderedDropdownWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -110,11 +112,11 @@ class SignUpScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: BorderTextFieldWidget(
-                            text: "First name", 
-                            keyboardType: TextInputType.name,),
-                        ),
+                        CustomDropDownWidget(
+                          item: telList,
+                          hint: "Tel", 
+                           
+                          suffixIcon: dropDownIcon),
                           SizedBox(
                             width: 30.0.w,
                           ),
@@ -125,6 +127,29 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    BorderTextFieldWidget(
+                            text: "Country of residence", 
+                            keyboardType: TextInputType.name,),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    BorderTextFieldWidget(
+                            text: "City", 
+                            keyboardType: TextInputType.name,),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    BorderTextFieldWidget(
+                            text: "Primary Celebrity Category", 
+                            keyboardType: TextInputType.name,
+                            suffixIcon: addIcon,
+                            onPressed: (){
+
+                            },
+                            ),
                       
                   ],
                 ),
