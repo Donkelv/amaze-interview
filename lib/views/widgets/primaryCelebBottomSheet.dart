@@ -3,6 +3,8 @@ import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/screens/signUpScreen.dart';
 import 'package:amaze/views/widgets/categoryGridview.dart';
+import 'package:amaze/views/widgets/customButton.dart';
+import 'package:amaze/views/widgets/customIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,6 +67,17 @@ void primaryCelebBottomSheet(
                 height: 31.0.h,
               ),
               CategoryGridViewBuilder(),
+              SizedBox(
+                height: 30.0.h,
+              ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 20.0.w),
+                child: CustomButton(
+                  text: "Select Category",
+                  onPressed: () {},
+                  color: primaryColorShade2,
+                ),
+              )
             ],
           ),
         );
