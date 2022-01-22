@@ -1,4 +1,5 @@
 import 'package:amaze/constants/colorConst.dart';
+import 'package:amaze/constants/createAccountList.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/core/controller/createAccountController.dart';
 import 'package:amaze/views/screens/signUpScreen.dart';
@@ -83,8 +84,8 @@ class _CreateAnAccountState extends State<CreateAnAccount>
                       (BuildContext context, WidgetRef ref, Widget? child) {
                     return PageView.builder(
                       controller: ref.watch(createAccountController),
-                      scrollDirection: Axis.vertical,
-                      itemCount: storeInfoList!.length,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: createAccountList!.length,
                       physics: const NeverScrollableScrollPhysics(),
                       onPageChanged: (int value) {
                         setState(() {
@@ -92,6 +93,10 @@ class _CreateAnAccountState extends State<CreateAnAccount>
                         });
                         //pageController.nextPage(duration: duration, curve: curve)
                       },
+                      itemBuilder: (context, index) {
+                        return createAccountList![index];
+                      },
+                      
                     );
                   },
                 ),),
