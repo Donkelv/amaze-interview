@@ -18,3 +18,5 @@ const String emailIcon = BaseSvgPath + "emailIcon.svg";
 const String cancelIcon = BaseSvgPath + "cancelIcon.svg";
 const String badgeIcon = BaseSvgPath + "badge.svg";
 const String privacyIcon = BaseSvgPath + "privacy.svg";
+const String personIcon = BaseSvgPath + "personIcon.svg";
+const String plusIcon = BaseSvgPath + "plusIcon.svg";
