@@ -2,14 +2,15 @@ import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/screens/signUpScreen.dart';
-import 'package:amaze/views/widgets/customIconButton.dart';
+import 'package:amaze/views/widgets/categoryGridview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void primaryCelebBottomSheet({required BuildContext context}) {
+void primaryCelebBottomSheet(
+    {required BuildContext context, required Size? size}) {
   showModalBottomSheet(
-    isScrollControlled: true,
+      isScrollControlled: true,
       isDismissible: true,
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -37,22 +38,33 @@ void primaryCelebBottomSheet({required BuildContext context}) {
                 height: 15.0.h,
               ),
               Padding(
-                padding:  EdgeInsets.only(right: 20.0.w),
+                padding: EdgeInsets.only(right: 20.0.w),
                 child: Align(
-                  alignment: Alignment.centerRight,
-                  child: backButton(context: context, svg: cancelIcon)
-                ),
+                    alignment: Alignment.centerRight,
+                    child: backButton(context: context, svg: cancelIcon)),
               ),
               Image.asset(primaryCategory),
               SizedBox(
                 height: 15.0.h,
               ),
-              Text("Primary Celebrity Category", 
-              textAlign: TextAlign.center,
-              style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.bold),),
-              Text("Please select a primary celebrity category that\ndefines your offering", 
-              textAlign: TextAlign.center,
-              style: CustomTheme.smallText(context).copyWith(color:textColor2 ),),
+              Text(
+                "Primary Celebrity Category",
+                textAlign: TextAlign.center,
+                style: CustomTheme.normalText(context).copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "Please select a primary celebrity category that\ndefines your offering",
+                textAlign: TextAlign.center,
+                style: CustomTheme.smallText(context).copyWith(
+                  color: textColor2,
+                ),
+              ),
+              SizedBox(
+                height: 31.0.h,
+              ),
+              CategoryGridViewBuilder(),
             ],
           ),
         );

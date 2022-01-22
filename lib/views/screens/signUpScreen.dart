@@ -179,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.name,
                       suffixIcon: addIcon,
                       onPressed: () {
-                        primaryCelebBottomSheet(context: context);
+                        primaryCelebBottomSheet(context: context, size: size);
                       },
                     ),
                     SizedBox(
@@ -305,7 +305,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: specialCharcaters == true
                                   ? greenColor.withOpacity(0.05)
                                   : whiteColorShade2,
-                              borderRadius: BorderRadius.circular(2.0),
+                              borderRadius: BorderRadius.circular(5.0),
                             ),
                             
                             duration: Duration(
