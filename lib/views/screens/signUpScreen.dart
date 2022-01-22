@@ -5,6 +5,7 @@ import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:amaze/views/widgets/borderedDropdownWidget.dart';
 import 'package:amaze/views/widgets/customIconButton.dart';
+import 'package:amaze/views/widgets/primaryCelebBottomSheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: 15.0.h,
                     ),
-                    backButton(context),
+                    backButton(context: context, svg: backIcon),
                     Align(
                       alignment: Alignment.center,
                       child: Image.asset(signUp),
@@ -177,7 +178,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: "Primary Celebrity Category",
                       keyboardType: TextInputType.name,
                       suffixIcon: addIcon,
-                      onPressed: () {},
+                      onPressed: () {
+                        primaryCelebBottomSheet(context: context);
+                      },
                     ),
                     SizedBox(
                       height: 30.0.h,
@@ -392,7 +395,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-Widget backButton(BuildContext context) {
+Widget backButton({required BuildContext context, String? svg}) {
   return Container(
     width: 32.0.w,
     height: 32.0.h,
@@ -405,7 +408,7 @@ Widget backButton(BuildContext context) {
       child: InkWell(
         onTap: () => Navigator.pop(context),
         child: SvgPicture.asset(
-          backIcon,
+          svg!,
           fit: BoxFit.scaleDown,
         ),
       ),
