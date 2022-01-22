@@ -4,6 +4,7 @@ import 'package:amaze/constants/telConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:amaze/views/widgets/borderedDropdownWidget.dart';
+import 'package:amaze/views/widgets/customIconButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -149,8 +150,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Expanded(
                           child: BorderTextFieldWidget(
-                            text: "Last name",
-                            keyboardType: TextInputType.name,
+                            text: "Phone number",
+                            keyboardType: TextInputType.number,
                           ),
                         ),
                       ],
@@ -340,7 +341,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
 
                     SizedBox(
-                      height: 50.0.h,
+                      height: 16.0.h,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: () {  },
+                        child: RichText(
+                          textAlign:  TextAlign.center,
+                          text: TextSpan(
+                            text: "By creating an account you agree to Amaze's",
+                            style: CustomTheme.smallestText(context).copyWith(
+                              //fontSize: 9.0.sp,
+                              color: blackColor,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "\nTerms of Service and Privacy Policy",
+                                style: CustomTheme.smallestText(context).copyWith(
+                                  //fontSize: 9.0.sp,
+                                  color: primaryColorShade2,
+                                ),
+                              ),
+                            ]
+                          ),),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0.h,
+                    
+                    ),
+                    CustomIconButton(
+                      title: "Continue",
+                      icon: emailIcon,
+                      onPressed: () {
+
+                      },
+                    ),
+                    SizedBox(
+                      height: 30.0.h,
                     ),
                   ],
                 ),
