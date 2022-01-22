@@ -1,3 +1,4 @@
+import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/stringConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/routes/routeGenerator.dart';
@@ -26,7 +27,12 @@ class RouteSelector extends StatelessWidget {
         return MaterialApp(
           title: appName!,
           color: Colors.white,
-          theme: CustomTheme.getTheme(),
+          theme: ThemeData().copyWith(
+  // change the focus border color of the TextField
+  colorScheme: ThemeData().colorScheme.copyWith(primary: primaryColorShade2),
+  // change the focus border color when the errorText is set
+  //errorColor: Colors.purple,
+),
           initialRoute: RouteGenerator.welcome, /// changed the rout to test out my screens
           onGenerateRoute: RouteGenerator.generateRoute,
           debugShowCheckedModeBanner: false,

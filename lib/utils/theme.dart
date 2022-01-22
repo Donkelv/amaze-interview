@@ -71,6 +71,7 @@ class CustomTheme {
       backgroundColor: Colors.white,
       primaryColor: primaryColor,
       fontFamily: GoogleFonts.mulish().fontFamily,
+      colorScheme: ThemeData().colorScheme.copyWith(primary: primaryColorShade2),
       //accentColor: Colors.black,
      // textTheme: _textTheme(),
       //typography: Typography(),

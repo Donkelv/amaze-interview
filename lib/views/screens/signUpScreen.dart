@@ -1,8 +1,10 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
+import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,33 +34,100 @@ class SignUpScreen extends StatelessWidget {
             top: true,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 15.0.h,
-                  ),
-                  backButton(context),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(signUp),
-                  ),
-                  SizedBox(
-                    height: 10.0.h,
-                  
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text("Create an Account", style: CustomTheme.mediumText(context), textAlign: TextAlign.center,),
-
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text("And access the richest collection of celebrities and amaze-ing people", style: CustomTheme.smallText(context), textAlign: TextAlign.center,),
-
-                  )
-                ],
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 15.0.h,
+                    ),
+                    backButton(context),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(signUp),
+                    ),
+                    SizedBox(
+                      height: 10.0.h,
+                    
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text("Create an Account", style: CustomTheme.mediumText(context), textAlign: TextAlign.center,),
+              
+                    ),
+                    SizedBox(
+                      height: 5.0.h,
+                    
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: 26.0.w),
+                        child: Text("And access the richest collection of celebrities and amaze-ing people", style: CustomTheme.smallText(context), textAlign: TextAlign.center,),
+                      ),
+              
+                    ),
+                    SizedBox(
+                      height: 35.0.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: BorderTextFieldWidget(
+                            text: "First name", 
+                            keyboardType: TextInputType.name,),
+                        ),
+                          SizedBox(
+                            width: 30.0.w,
+                          ),
+                        Expanded(
+                          child: BorderTextFieldWidget(
+                            text: "Last name", 
+                            keyboardType: TextInputType.name,),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    BorderTextFieldWidget(
+                            text: "Celebrity AKA", 
+                            keyboardType: TextInputType.name,),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    BorderTextFieldWidget(
+                            text: "Email Address", 
+                            keyboardType: TextInputType.emailAddress,),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: BorderTextFieldWidget(
+                            text: "First name", 
+                            keyboardType: TextInputType.name,),
+                        ),
+                          SizedBox(
+                            width: 30.0.w,
+                          ),
+                        Expanded(
+                          child: BorderTextFieldWidget(
+                            text: "Last name", 
+                            keyboardType: TextInputType.name,),
+                        ),
+                      ],
+                    ),
+                      
+                  ],
+                ),
               ),
             ),
           ),
@@ -67,6 +136,8 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 Widget backButton(BuildContext context) {
   return Container(
