@@ -13,8 +13,9 @@ class BorderTextFieldWidget extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final VoidCallback? onPressed;
+  final Function(String)? onChanged;
 
-  const BorderTextFieldWidget({Key? key, required this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed})
+  const BorderTextFieldWidget({Key? key, required this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged})
       : super(key: key);
 
   @override
@@ -24,6 +25,7 @@ class BorderTextFieldWidget extends StatelessWidget {
       controller: controller,
       //autofocus: true,
       cursorColor: primaryColorShade2,
+      onChanged: onChanged == null ? null : (value) => onChanged!(value),
       decoration: InputDecoration(
         floatingLabelBehavior:FloatingLabelBehavior.always,
         contentPadding: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 20.0.w),
@@ -33,6 +35,8 @@ class BorderTextFieldWidget extends StatelessWidget {
         suffixIcon: suffixIcon == null ? 
         null : 
         Container(
+          width: 5.0,
+          padding: EdgeInsetsDirectional.only(end: 1.0),
       decoration: BoxDecoration(
         color: Colors.transparent ,
         shape: BoxShape.circle,
@@ -41,13 +45,10 @@ class BorderTextFieldWidget extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           onTap: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Center(
-              child: SvgPicture.asset(
-                suffixIcon!,
-                fit: BoxFit.scaleDown,
-              ),
+          child: Center(
+            child: SvgPicture.asset(
+              suffixIcon!,
+              fit: BoxFit.scaleDown,
             ),
           ),
         ),

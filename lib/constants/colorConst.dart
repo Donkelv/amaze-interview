@@ -10,3 +10,4 @@ Color greenColor = Color(0xFF299B01);
 Color whiteColor = Colors.white;
 Color whiteColorShade1 = Color(0xFFF6F7F7);
 Color whiteColorShade2 = Color(0xFFCBC8D2);
+Color blackColor = Colors.black;  
