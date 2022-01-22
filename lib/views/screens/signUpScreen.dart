@@ -2,6 +2,7 @@ import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/constants/telConst.dart';
 import 'package:amaze/utils/theme.dart';
+import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:amaze/views/widgets/borderedDropdownWidget.dart';
 import 'package:amaze/views/widgets/customIconButton.dart';
@@ -23,17 +24,13 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
   RegExp regExCapitalLetter = new RegExp(r'[A-Z]');
   RegExp regExSmallLetter = new RegExp(r'[a-z]');
   RegExp regSpecialChar = new RegExp(r'[!@#\$%\^&\*]');
 
-
   bool? capitalLetter;
   bool? smallLetter;
   bool? specialCharcaters;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -190,8 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           setState(() {
                             capitalLetter = regExCapitalLetter.hasMatch(value);
                             smallLetter = regExSmallLetter.hasMatch(value);
-                            specialCharcaters =
-                                regSpecialChar.hasMatch(value);
+                            specialCharcaters = regSpecialChar.hasMatch(value);
                           });
                         },
                         text: "Password",
@@ -205,94 +201,96 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Expanded(
                           child: AnimatedContainer(
-                            //width: 93.0.w,
-                            //height: 25.0.h,
-                            decoration: BoxDecoration(
-                              color: capitalLetter == true
-                                  ? greenColor.withOpacity(0.05)
-                                  : whiteColorShade2,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            
-                            duration: Duration(
-                              seconds: 1,
-                            ),
-                            curve: Curves.easeIn,
-                        
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    size: 15,
-                                    color: capitalLetter == true
-                                  ? greenColor
-                                  : textColor,
-                                  ),
-                                  SizedBox(
-                                    width: 1.0.w,
-                                  ),
-                                  Text("Capital letters", style: CustomTheme.smallestText(context).copyWith(
-                                    fontSize: 9.0.sp,
-                                    color: capitalLetter == true
-                                  ? greenColor
-                                  : textColor,
-                                  ),),
-                                ],
+                              //width: 93.0.w,
+                              //height: 25.0.h,
+                              decoration: BoxDecoration(
+                                color: capitalLetter == true
+                                    ? greenColor.withOpacity(0.05)
+                                    : whiteColorShade2,
+                                borderRadius: BorderRadius.circular(5.0),
                               ),
-                            )
-                          ),
+                              duration: Duration(
+                                seconds: 1,
+                              ),
+                              curve: Curves.easeIn,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.check,
+                                      size: 15,
+                                      color: capitalLetter == true
+                                          ? greenColor
+                                          : textColor,
+                                    ),
+                                    SizedBox(
+                                      width: 1.0.w,
+                                    ),
+                                    Text(
+                                      "Capital letters",
+                                      style: CustomTheme.smallestText(context)
+                                          .copyWith(
+                                        fontSize: 9.0.sp,
+                                        color: capitalLetter == true
+                                            ? greenColor
+                                            : textColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )),
                         ),
                         SizedBox(
                           width: 5.0.w,
                         ),
                         Expanded(
                           child: AnimatedContainer(
-                            //width: 93.0.w,
-                            //height: 25.0.h,
-                            decoration: BoxDecoration(
-                              color: smallLetter == true
-                                  ? greenColor.withOpacity(0.05)
-                                  : whiteColorShade2,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            
-                            duration: Duration(
-                              seconds: 1,
-                            ),
-                            curve: Curves.easeIn,
-                        
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    size: 15,
-                                    color: smallLetter == true
-                                  ? greenColor
-                                  : blackColor,
-                                  ),
-                                  SizedBox(
-                                    width: 1.0.w,
-                                  ),
-                                  Expanded(
-                                    child: Text("Lowercase letters", style: CustomTheme.smallestText(context).copyWith(
-                                      fontSize: 9.0.sp,
-                                      color: smallLetter == true
-                                    ? greenColor
-                                    : blackColor,
-                                    ),),
-                                  ),
-                                ],
+                              //width: 93.0.w,
+                              //height: 25.0.h,
+                              decoration: BoxDecoration(
+                                color: smallLetter == true
+                                    ? greenColor.withOpacity(0.05)
+                                    : whiteColorShade2,
+                                borderRadius: BorderRadius.circular(5.0),
                               ),
-                            )
-                          ),
+                              duration: Duration(
+                                seconds: 1,
+                              ),
+                              curve: Curves.easeIn,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.check,
+                                      size: 15,
+                                      color: smallLetter == true
+                                          ? greenColor
+                                          : blackColor,
+                                    ),
+                                    SizedBox(
+                                      width: 1.0.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "Lowercase letters",
+                                        style: CustomTheme.smallestText(context)
+                                            .copyWith(
+                                          fontSize: 9.0.sp,
+                                          color: smallLetter == true
+                                              ? greenColor
+                                              : blackColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )),
                         ),
                         SizedBox(
                           width: 5.0.w,
@@ -307,12 +305,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   : whiteColorShade2,
                               borderRadius: BorderRadius.circular(5.0),
                             ),
-                            
+
                             duration: Duration(
                               seconds: 1,
                             ),
                             curve: Curves.easeIn,
-                        
+
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Row(
@@ -323,18 +321,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Icons.check,
                                     size: 15,
                                     color: specialCharcaters == true
-                                  ? greenColor
-                                  : blackColor,
+                                        ? greenColor
+                                        : blackColor,
                                   ),
                                   SizedBox(
                                     width: 1.0.w,
                                   ),
-                                  Text("Special Characters", style: CustomTheme.smallestText(context).copyWith(
-                                    fontSize: 9.0.sp,
-                                    color: specialCharcaters == true
-                                  ? greenColor
-                                  : blackColor,
-                                  ),),
+                                  Text(
+                                    "Special Characters",
+                                    style: CustomTheme.smallestText(context)
+                                        .copyWith(
+                                      fontSize: 9.0.sp,
+                                      color: specialCharcaters == true
+                                          ? greenColor
+                                          : blackColor,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -342,43 +344,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ],
                     ),
-
                     SizedBox(
                       height: 16.0.h,
                     ),
                     Align(
                       alignment: Alignment.center,
                       child: TextButton(
-                        onPressed: () {  },
+                        onPressed: () {},
                         child: RichText(
-                          textAlign:  TextAlign.center,
+                          textAlign: TextAlign.center,
                           text: TextSpan(
-                            text: "By creating an account you agree to Amaze's",
-                            style: CustomTheme.smallestText(context).copyWith(
-                              //fontSize: 9.0.sp,
-                              color: blackColor,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "\nTerms of Service and Privacy Policy",
-                                style: CustomTheme.smallestText(context).copyWith(
-                                  //fontSize: 9.0.sp,
-                                  color: primaryColorShade2,
-                                ),
+                              text:
+                                  "By creating an account you agree to Amaze's",
+                              style: CustomTheme.smallestText(context).copyWith(
+                                //fontSize: 9.0.sp,
+                                color: blackColor,
                               ),
-                            ]
-                          ),),
+                              children: [
+                                TextSpan(
+                                  text: "\nTerms of Service and Privacy Policy",
+                                  style: CustomTheme.smallestText(context)
+                                      .copyWith(
+                                    //fontSize: 9.0.sp,
+                                    color: primaryColorShade2,
+                                  ),
+                                ),
+                              ]),
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 20.0.h,
-                    
                     ),
                     CustomIconButton(
                       title: "Continue",
                       icon: emailIcon,
                       onPressed: () {
-
+                        Navigator.pushNamed(
+                            context, RouteGenerator.createAccount);
                       },
                     ),
                     SizedBox(

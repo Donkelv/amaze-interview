@@ -48,6 +48,7 @@ dev_dependencies:
   google_fonts: ^2.2.0
   flutter_screenutil: ^5.1.0
   flutter_svg: ^1.0.1
+  flutter_riverpod: ^1.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
