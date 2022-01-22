@@ -66,7 +66,10 @@ void primaryCelebBottomSheet(
               SizedBox(
                 height: 31.0.h,
               ),
-              CategoryGridViewBuilder(),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 25.0.w),
+                child: CategoryGridViewBuilder(),
+              ),
               SizedBox(
                 height: 30.0.h,
               ),

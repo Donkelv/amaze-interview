@@ -16,7 +16,7 @@ class _CategoryGridViewBuilderState extends State<CategoryGridViewBuilder> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+  //padding: EdgeInsets.symmetric(horizontal: 20.0.w),
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

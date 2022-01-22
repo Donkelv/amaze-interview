@@ -16,4 +16,5 @@ const String dropDownIcon = BaseSvgPath + "dropDownIcon.svg";
 const String addIcon = BaseSvgPath + "addIcon.svg";
 const String emailIcon = BaseSvgPath + "emailIcon.svg";
 const String cancelIcon = BaseSvgPath + "cancelIcon.svg";
-
+const String badgeIcon = BaseSvgPath + "badge.svg";
+const String privacyIcon = BaseSvgPath + "privacy.svg";
