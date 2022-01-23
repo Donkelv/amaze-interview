@@ -1,7 +1,8 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/constants/telConst.dart';
-import 'package:amaze/core/controller/signUpStateController.dart';
+import 'package:amaze/core/controller/loaderState.dart';
+import 'package:amaze/core/controller/signUpController.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
@@ -33,6 +34,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool? capitalLetter;
   bool? smallLetter;
   bool? specialCharcaters;
+
+  TextEditingController? firstName;
+  TextEditingController? lastName;
+  TextEditingController? celebrity;
+  TextEditingController? email;
+  TextEditingController? phoneNumber;
+  TextEditingController? country;
+  TextEditingController?city;
+  TextEditingController? primcelebCategory;
+  TextEditingController? password;
+
+
+  @override
+  void initState() {
+    firstName = TextEditingController();
+    lastName = TextEditingController();
+    celebrity = TextEditingController();
+    email = TextEditingController();
+    phoneNumber = TextEditingController();
+    country = TextEditingController();
+    city = TextEditingController();
+    primcelebCategory = TextEditingController();
+    password = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -375,22 +401,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                              text:
-                                  "By creating an account you agree to Amaze's",
-                              style: CustomTheme.smallestText(context).copyWith(
-                                //fontSize: 9.0.sp,
-                                color: blackColor,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text: "\nTerms of Service and Privacy Policy",
-                                  style: CustomTheme.smallestText(context)
-                                      .copyWith(
-                                    //fontSize: 9.0.sp,
-                                    color: primaryColorShade2,
-                                  ),
+                            text: "By creating an account you agree to Amaze's",
+                            style: CustomTheme.smallestText(context).copyWith(
+                              //fontSize: 9.0.sp,
+                              color: blackColor,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "\nTerms of Service and Privacy Policy",
+                                style:
+                                    CustomTheme.smallestText(context).copyWith(
+                                  //fontSize: 9.0.sp,
+                                  color: primaryColorShade2,
                                 ),
-                              ]),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -400,14 +426,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Consumer(
                       builder:
                           (BuildContext context, WidgetRef ref, Widget? child) {
-                        final signUp = ref.watch(signUpState);
-                        return 
-                        CustomIconButton(
+                        return CustomIconButton(
                           title: "Continue",
                           icon: emailIcon,
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, RouteGenerator.createAccount);
+                            //ref.read(signUpProvider).
+                            ref.read(signUpProvider.notifier).signUp(
+                                "firstName",
+                                "lastName",
+                                "email@y.com",
+                                "+2349075545403",
+                                "companyName",
+                                0,
+                                "celebrityAKA",
+                                "jobTitle",
+                                "userType",
+                                "location",
+                                "password",
+                                "firebaseToken",
+                                context);
                           },
                         );
                       },
