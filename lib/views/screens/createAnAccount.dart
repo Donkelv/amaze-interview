@@ -76,9 +76,9 @@ class _CreateAnAccountState extends State<CreateAnAccount>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          for (int i = 0; i < 6; i++)
+                          for (int i = 0; i < 7; i++)
                             AnimatedContainer(
-                              width: size.width / 6,
+                              width: size.width / 7,
                               height: 2.0.h,
                               color: i <= currentIndex
                                   ? primaryColorShade2

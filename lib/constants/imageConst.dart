@@ -26,3 +26,4 @@ const String nairaIcon = BaseSvgPath  + "naira.svg";
 const String infoIcon = BaseSvgPath + "info.svg";
 const String rocketIcon = BaseSvgPath + "rocket.svg";
 const String documentIcon = BaseSvgPath + "document.svg";
+const String ticketIcon = BaseSvgPath + "ticket.svg";

@@ -2,7 +2,7 @@ import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/core/controller/createAccountController.dart';
 import 'package:amaze/utils/theme.dart';
-import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
+
 import 'package:amaze/views/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
