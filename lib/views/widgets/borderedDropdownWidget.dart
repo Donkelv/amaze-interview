@@ -16,7 +16,7 @@ class CustomDropDownWidget extends StatefulWidget {
       required this.item,
       required this.hint,
      
-      required this.suffixIcon})
+      required this.suffixIcon, })
       : super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    
     return SizedBox(
       width: 100.0.w,
       child: DropdownButtonFormField<TelModel?>(

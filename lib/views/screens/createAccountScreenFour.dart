@@ -118,7 +118,7 @@ class CreateAccountScreenFour extends StatelessWidget {
                               
                              ),
                             
-                           ]
+                           ],
                           ),
                         ),
                       ),
