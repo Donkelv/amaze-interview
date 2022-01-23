@@ -15,8 +15,9 @@ class BorderTextFieldWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final Function(String)? onChanged;
   final String? hintText;
+  final Widget? suffixIconWidget;
 
-  const BorderTextFieldWidget({Key? key,  this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged, this.hintText})
+  const BorderTextFieldWidget({Key? key,  this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged, this.hintText, this.suffixIconWidget})
       : super(key: key);
 
   @override
@@ -35,28 +36,9 @@ class BorderTextFieldWidget extends StatelessWidget {
         focusColor: primaryColorShade2,
         hintText: hintText == null ? "" : hintText!,
         prefixIcon: prefixIcon == null ? null : SvgPicture.asset(prefixIcon!, fit: BoxFit.scaleDown,),
-        suffixIcon: suffixIcon == null ? 
+        suffixIcon: suffixIconWidget == null ? 
         null : 
-        Container(
-          width: 5.0,
-          padding: EdgeInsetsDirectional.only(end: 1.0),
-      decoration: BoxDecoration(
-        color: Colors.transparent ,
-        shape: BoxShape.circle,
-      ),
-      child: Material(
-        type: MaterialType.transparency,
-        child: InkWell(
-          onTap: onPressed,
-          child: Center(
-            child: SvgPicture.asset(
-              suffixIcon!,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-        ),
-      ),
-    ),
+        suffixIconWidget,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide(

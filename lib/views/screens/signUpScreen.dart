@@ -174,10 +174,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     BorderTextFieldWidget(
                       text: "Primary Celebrity Category",
                       keyboardType: TextInputType.name,
-                      suffixIcon: addIcon,
-                      onPressed: () {
-                        primaryCelebBottomSheet(context: context, size: size);
-                      },
+                      suffixIconWidget: Container(
+          width: 5.0,
+          padding: EdgeInsetsDirectional.only(end: 1.0),
+      decoration: BoxDecoration(
+        color: Colors.transparent ,
+        shape: BoxShape.circle,
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: (){
+            primaryCelebBottomSheet(context: context, size: size);
+          },
+          child: Center(
+            child: SvgPicture.asset(
+              addIcon,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+        ),
+      ),
+    ),
+                      
+                      
                     ),
                     SizedBox(
                       height: 30.0.h,
