@@ -89,7 +89,7 @@ class CreateAccountScreenSix extends StatelessWidget {
                       padding: EdgeInsets.only(left: 15.0.w),
                       child: Text(
                         "Upload your documents",
-                        style: CustomTheme.smallText(context).copyWith(color: textColor2,),
+                        style: CustomTheme.smallText(context).copyWith(color: textColor2, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
@@ -111,7 +111,7 @@ class CreateAccountScreenSix extends StatelessWidget {
                             ),
                             ),
                           ),
-                        )
+                        ),
                     ),
                     ),
                   ],

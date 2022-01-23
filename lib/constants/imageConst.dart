@@ -27,3 +27,6 @@ const String infoIcon = BaseSvgPath + "info.svg";
 const String rocketIcon = BaseSvgPath + "rocket.svg";
 const String documentIcon = BaseSvgPath + "document.svg";
 const String ticketIcon = BaseSvgPath + "ticket.svg";
+const String instagramIcon = BaseSvgPath + "instagram.svg";
+const String facebookIcon = BaseSvgPath + "facebook.svg";
+const String twitterIcon = BaseSvgPath + "twitter.svg";

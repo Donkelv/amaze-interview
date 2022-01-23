@@ -1,6 +1,8 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
+import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
+import 'package:amaze/views/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -49,6 +51,71 @@ class CreateAccountScreenSeven extends StatelessWidget {
               SizedBox(
                 height: 35.0.h,
               ),
+              Text(
+                    "Website (Optional)",
+                    style: CustomTheme.smallestText(context).copyWith(color: textColor2, fontWeight: FontWeight.bold),
+                  ),
+                SizedBox(
+                  height: 5.0.h,
+                ),
+                BorderTextFieldWidget(
+                 keyboardType: TextInputType.name,
+                ),
+                SizedBox(
+                  height: 15.0.h,
+                
+                ),
+                Text(
+                    "Instagram",
+                    style: CustomTheme.smallestText(context).copyWith(color: textColor2, fontWeight: FontWeight.bold),
+                  ),
+                SizedBox(
+                  height: 5.0.h,
+                ),
+                BorderTextFieldWidget(
+                 keyboardType: TextInputType.name,
+                 prefixIcon: instagramIcon,
+                ),
+                SizedBox(
+                  height: 15.0.h,
+                
+                ),
+                Text(
+                    "Twitter",
+                    style: CustomTheme.smallestText(context).copyWith(color: textColor2, fontWeight: FontWeight.bold),
+                  ),
+                SizedBox(
+                  height: 5.0.h,
+                ),
+                BorderTextFieldWidget(
+                 keyboardType: TextInputType.name,
+                 prefixIcon: twitterIcon,
+                ),
+                SizedBox(
+                  height: 15.0.h,
+                
+                ),
+                Text(
+                    "Facebook",
+                    style: CustomTheme.smallestText(context).copyWith(color: textColor2, fontWeight: FontWeight.bold),
+                  ),
+                SizedBox(
+                  height: 5.0.h,
+                ),
+                BorderTextFieldWidget(
+                 keyboardType: TextInputType.name,
+                 prefixIcon: facebookIcon,
+                ),
+                SizedBox(
+                  height: 50.0.h,
+                ),
+                CustomButton(
+                    color: primaryColor,
+                    text: "Save and continue",
+                    onPressed: () {
+                    
+                    },
+                  )
             ],
           ),
         ),
