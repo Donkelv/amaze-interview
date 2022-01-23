@@ -8,17 +8,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-final signUpProvider =
-    StateNotifierProvider<SignUpNotifier, Future<dynamic>>((ref) {
+final signUpProvider = StateNotifierProvider<SignUpNotifier, dynamic>((ref) {
   return SignUpNotifier(ref);
 });
 
-class SignUpNotifier extends StateNotifier<Future<dynamic>> {
-  SignUpNotifier(this.ref) : super(Future<dynamic>.value(null));
+class SignUpNotifier extends StateNotifier<dynamic> {
+  SignUpNotifier(this.ref) : super(null);
 
   final Ref ref;
-
-  
 
   Future signUp(
       String? firstName,
@@ -34,7 +31,7 @@ class SignUpNotifier extends StateNotifier<Future<dynamic>> {
       String? password,
       String? firebaseToken,
       BuildContext context) async {
-    final  sta = ref.watch(loaderStateProvider.notifier);
+    final sta = ref.watch(loaderStateProvider.notifier);
     sta.setState(LoaderStatus.LOADING);
     var url = baseUrl + "/User/account/signup";
 
@@ -75,9 +72,9 @@ class SignUpNotifier extends StateNotifier<Future<dynamic>> {
       return SignUpModel.fromJson(jsonDecode(response.body));
     } else {
       sta.setState(LoaderStatus.ERROR);
+      state = "Unable to sign up\ntry again later";
       print(
         response.body,
-        
       );
       print(response.statusCode);
       return SignUp404Model.fromJson(jsonDecode(response.body));

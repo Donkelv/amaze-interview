@@ -5,6 +5,8 @@ import 'package:amaze/core/controller/loaderState.dart';
 import 'package:amaze/core/controller/signUpController.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/routes/routeGenerator.dart';
+import 'package:amaze/views/screens/createAnAccount.dart';
+import 'package:amaze/views/screens/loader.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:amaze/views/widgets/borderedDropdownWidget.dart';
 import 'package:amaze/views/widgets/customIconButton.dart';
@@ -41,10 +43,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController? email;
   TextEditingController? phoneNumber;
   TextEditingController? country;
-  TextEditingController?city;
+  TextEditingController? city;
   TextEditingController? primcelebCategory;
   TextEditingController? password;
-
 
   @override
   void initState() {
@@ -429,9 +430,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return CustomIconButton(
                           title: "Continue",
                           icon: emailIcon,
-                          onPressed: () {
-                            //ref.read(signUpProvider).
-                            ref.read(signUpProvider.notifier).signUp(
+                          onPressed: () async {
+                            ref
+                                .watch(loaderStateProvider.notifier)
+                                .setState(LoaderStatus.LOADING);
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoaderScreen(
+                                  child: CreateAnAccount(),
+                                ),
+                              ),
+                            ).timeout(Duration(seconds: 1)).whenComplete(() => 
+                            ref.watch(signUpProvider.notifier).signUp(
                                 "firstName",
                                 "lastName",
                                 "email@y.com",
@@ -444,7 +455,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 "location",
                                 "password",
                                 "firebaseToken",
-                                context);
+                                context),
+                            );
                           },
                         );
                       },
