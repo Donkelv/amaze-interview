@@ -5,6 +5,7 @@ const String BaseSvgPath = "assets/svg/";
 const String donJazzy = BaseImagePath + "donJazzy.png";
 const String signUp = BaseImagePath + "signUp.png";
 const String primaryCategory = BaseImagePath + "primaryCategory.png";
+const String successIcon = BaseImagePath + "successIcon.png";
 
 
 //svg Images
@@ -30,3 +31,4 @@ const String ticketIcon = BaseSvgPath + "ticket.svg";
 const String instagramIcon = BaseSvgPath + "instagram.svg";
 const String facebookIcon = BaseSvgPath + "facebook.svg";
 const String twitterIcon = BaseSvgPath + "twitter.svg";
+const String successIconSvg = BaseSvgPath + "success.svg";
