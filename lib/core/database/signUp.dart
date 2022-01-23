@@ -1,8 +1,24 @@
 import 'package:amaze/core/const.dart';
+import 'package:amaze/model/signUp404Model.dart';
+import 'package:amaze/model/signUpModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future signUp({required String? firstName, required String? lastName, required String? email, required String? phoneNumber, required String? companyName, required String? primaryCelebrityCategory, required String? celebrityAKA, required String? jobTitle,  required String? userType, required String? location, required String? password, required String? firebaseToken}) async {
+import 'dart:convert';
+
+Future signUp(
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? phoneNumber,
+    String? companyName,
+    String? primaryCelebrityCategory,
+    String? celebrityAKA,
+    String? jobTitle,
+    String? userType,
+    String? location,
+    String? password,
+    String? firebaseToken) async {
   var url = baseUrl + "/User/account/signup";
 
   var finalUrl = Uri.parse(url);
@@ -23,5 +39,20 @@ Future signUp({required String? firstName, required String? lastName, required S
   });
   debugPrint(response.body);
   debugPrint(response.statusCode.toString());
-  return response;
+
+  if (response.statusCode == 200) {
+    print(
+      SignUp404Model.fromJson(
+        jsonDecode(response.body),
+      ),
+    );
+    return SignUpModel.fromJson(jsonDecode(response.body));
+  } else {
+    print(
+      SignUp404Model.fromJson(
+        jsonDecode(response.body),
+      ),
+    );
+    return SignUp404Model.fromJson(jsonDecode(response.body));
+  }
 }

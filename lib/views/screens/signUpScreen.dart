@@ -1,6 +1,7 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/constants/telConst.dart';
+import 'package:amaze/core/controller/signUpStateController.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -175,29 +177,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: "Primary Celebrity Category",
                       keyboardType: TextInputType.name,
                       suffixIconWidget: Container(
-          width: 5.0,
-          padding: EdgeInsetsDirectional.only(end: 1.0),
-      decoration: BoxDecoration(
-        color: Colors.transparent ,
-        shape: BoxShape.circle,
-      ),
-      child: Material(
-        type: MaterialType.transparency,
-        child: InkWell(
-          onTap: (){
-            primaryCelebBottomSheet(context: context, size: size);
-          },
-          child: Center(
-            child: SvgPicture.asset(
-              addIcon,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-        ),
-      ),
-    ),
-                      
-                      
+                        width: 5.0,
+                        padding: EdgeInsetsDirectional.only(end: 1.0),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: InkWell(
+                            onTap: () {
+                              primaryCelebBottomSheet(
+                                  context: context, size: size);
+                            },
+                            child: Center(
+                              child: SvgPicture.asset(
+                                addIcon,
+                                fit: BoxFit.scaleDown,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 30.0.h,
@@ -396,12 +397,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: 20.0.h,
                     ),
-                    CustomIconButton(
-                      title: "Continue",
-                      icon: emailIcon,
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, RouteGenerator.createAccount);
+                    Consumer(
+                      builder:
+                          (BuildContext context, WidgetRef ref, Widget? child) {
+                        final signUp = ref.watch(signUpState);
+                        return 
+                        CustomIconButton(
+                          title: "Continue",
+                          icon: emailIcon,
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RouteGenerator.createAccount);
+                          },
+                        );
                       },
                     ),
                     SizedBox(
