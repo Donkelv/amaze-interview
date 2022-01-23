@@ -21,3 +21,7 @@ const String privacyIcon = BaseSvgPath + "privacy.svg";
 const String personIcon = BaseSvgPath + "personIcon.svg";
 const String plusIcon = BaseSvgPath + "plusIcon.svg";
 const String giftIcon = BaseSvgPath + "gift.svg";
+const String notesIcon = BaseSvgPath + "notes.svg";
+const String nairaIcon = BaseSvgPath  + "naira.svg";
+const String infoIcon = BaseSvgPath + "info.svg";
+const String rocketIcon = BaseSvgPath + "rocket.svg";

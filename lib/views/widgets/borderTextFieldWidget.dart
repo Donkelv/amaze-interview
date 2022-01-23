@@ -14,8 +14,9 @@ class BorderTextFieldWidget extends StatelessWidget {
   final String? suffixIcon;
   final VoidCallback? onPressed;
   final Function(String)? onChanged;
+  final String? hintText;
 
-  const BorderTextFieldWidget({Key? key, required this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged})
+  const BorderTextFieldWidget({Key? key,  this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged, this.hintText})
       : super(key: key);
 
   @override
@@ -29,9 +30,11 @@ class BorderTextFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         floatingLabelBehavior:FloatingLabelBehavior.always,
         contentPadding: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 20.0.w),
-        label: Text(text!),
+        label: text == null ? null : Text(text!),
         //labelStyle: CustomTheme.normalText(context).copyWith(color: whiteColorShade2),
         focusColor: primaryColorShade2,
+        hintText: hintText == null ? "" : hintText!,
+        prefixIcon: prefixIcon == null ? null : SvgPicture.asset(prefixIcon!, fit: BoxFit.scaleDown,),
         suffixIcon: suffixIcon == null ? 
         null : 
         Container(

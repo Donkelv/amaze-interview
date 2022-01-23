@@ -1,3 +1,4 @@
+import 'package:amaze/views/screens/createAccountScreenFour.dart';
 import 'package:amaze/views/screens/createAccountScreenOne.dart';
 import 'package:amaze/views/screens/createAccountScreenThree.dart';
 import 'package:amaze/views/screens/createAccountScreenTwo.dart';
@@ -7,4 +8,5 @@ List<Widget>? createAccountList = [
   CreateAccountScreenOne(),
   CreateAccountScreenTwo(),
   CreateAccountScreenThree(),
+  CreateAccountScreenFour(),
 ];
