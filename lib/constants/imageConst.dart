@@ -20,3 +20,4 @@ const String badgeIcon = BaseSvgPath + "badge.svg";
 const String privacyIcon = BaseSvgPath + "privacy.svg";
 const String personIcon = BaseSvgPath + "personIcon.svg";
 const String plusIcon = BaseSvgPath + "plusIcon.svg";
+const String giftIcon = BaseSvgPath + "gift.svg";
