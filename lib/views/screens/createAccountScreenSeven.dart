@@ -1,5 +1,6 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
+import 'package:amaze/core/validator/validator.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
@@ -9,9 +10,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'createAccountScreenOne.dart';
 
-class CreateAccountScreenSeven extends StatelessWidget {
+class CreateAccountScreenSeven extends StatefulWidget {
   const CreateAccountScreenSeven({Key? key}) : super(key: key);
 
+  @override
+  State<CreateAccountScreenSeven> createState() => _CreateAccountScreenSevenState();
+}
+
+class _CreateAccountScreenSevenState extends State<CreateAccountScreenSeven> {
+
+  TextEditingController  websiteController = TextEditingController();
+  TextEditingController facebookController = TextEditingController();
+  TextEditingController instagramController = TextEditingController();
+  TextEditingController twitterController = TextEditingController();
+
+
+ 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,6 +73,10 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                controller: websiteController,
+                validator: (value) {
+                              
+                            },
                 isPassword: false,
                 keyboardType: TextInputType.name,
               ),
@@ -74,6 +92,11 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                controller: instagramController,
+                validator: (value) {
+                              return Validator()
+                                  .validateEmptyField(value!, "Instagram");
+                            },
                 isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: instagramIcon,
@@ -90,6 +113,11 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                controller: twitterController,
+                validator: (value) {
+                              return Validator()
+                                  .validateEmptyField(value!, "Twitter");
+                            },
                 isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: twitterIcon,
@@ -106,6 +134,11 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                controller: facebookController,
+                validator: (value) {
+                              return Validator()
+                                  .validateEmptyField(value!, "Facebook");
+                            },
                 isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: facebookIcon,

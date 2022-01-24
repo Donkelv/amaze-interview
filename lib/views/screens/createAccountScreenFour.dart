@@ -68,6 +68,9 @@ class CreateAccountScreenFour extends StatelessWidget {
                 height: 20.0.h,
               ),
               BorderTextFieldWidget(
+                validator: (value) {
+                              
+                            },
                 isPassword: false,
                  keyboardType: TextInputType.number,
                  hintText: "Enter preferred amount",

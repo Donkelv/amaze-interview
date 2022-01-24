@@ -3,6 +3,7 @@ import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/constants/telConst.dart';
 import 'package:amaze/core/controller/loaderState.dart';
 import 'package:amaze/core/controller/signUpController.dart';
+import 'package:amaze/core/validator/validator.dart';
 import 'package:amaze/utils/theme.dart';
 
 import 'package:amaze/views/screens/createAnAccount.dart';
@@ -86,190 +87,340 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: EdgeInsets.symmetric(horizontal: 24.0.w),
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 15.0.h,
-                    ),
-                    backButton(context: context, svg: backIcon),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Image.asset(signUp),
-                    ),
-                    SizedBox(
-                      height: 10.0.h,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Create an Account",
-                        style: CustomTheme.mediumText(context),
-                        textAlign: TextAlign.center,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 15.0.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 5.0.h,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 26.0.w),
+                      backButton(context: context, svg: backIcon),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset(signUp),
+                      ),
+                      SizedBox(
+                        height: 10.0.h,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
                         child: Text(
-                          "And access the richest collection of celebrities and amaze-ing people",
-                          style: CustomTheme.smallText(context),
+                          "Create an Account",
+                          style: CustomTheme.mediumText(context),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 35.0.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: BorderTextFieldWidget(
-                            isPassword: false,
-                            text: "First name",
-                            keyboardType: TextInputType.name,
+                      SizedBox(
+                        height: 5.0.h,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 26.0.w),
+                          child: Text(
+                            "And access the richest collection of celebrities and amaze-ing people",
+                            style: CustomTheme.smallText(context),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(
-                          width: 30.0.w,
-                        ),
-                        Expanded(
-                          child: BorderTextFieldWidget(
-                            isPassword: false,
-                            text: "Last name",
-                            keyboardType: TextInputType.name,
+                      ),
+                      SizedBox(
+                        height: 35.0.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: BorderTextFieldWidget(
+                              validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "First Name");
+                              },
+                              controller: firstName,
+                              isPassword: false,
+                              text: "First name",
+                              keyboardType: TextInputType.name,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: false,
-                      text: "Celebrity AKA",
-                      keyboardType: TextInputType.name,
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: false,
-                      text: "Email Address",
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CustomDropDownWidget(
-                            item: telList,
-                            hint: "Tel",
-                            suffixIcon: dropDownIcon),
-                        SizedBox(
-                          width: 30.0.w,
-                        ),
-                        Expanded(
-                          child: BorderTextFieldWidget(
-                            isPassword: false,
-                            text: "Phone number",
-                            keyboardType: TextInputType.number,
+                          SizedBox(
+                            width: 30.0.w,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: false,
-                      text: "Country of residence",
-                      keyboardType: TextInputType.name,
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: false,
-                      text: "City",
-                      keyboardType: TextInputType.name,
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: false,
-                      text: "Primary Celebrity Category",
-                      keyboardType: TextInputType.name,
-                      suffixIconWidget: Container(
-                        width: 5.0,
-                        padding: EdgeInsetsDirectional.only(end: 1.0),
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: InkWell(
-                            onTap: () {
-                              primaryCelebBottomSheet(
-                                  context: context, size: size);
-                            },
-                            child: Center(
-                              child: SvgPicture.asset(
-                                addIcon,
-                                fit: BoxFit.scaleDown,
+                          Expanded(
+                            child: BorderTextFieldWidget(
+                              controller: lastName,
+                              validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "Last Name");
+                              },
+                              isPassword: false,
+                              text: "Last name",
+                              keyboardType: TextInputType.name,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller: celebrity,
+                        validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "Celebrity AKA");
+                              },
+                        isPassword: false,
+                        text: "Celebrity AKA",
+                        keyboardType: TextInputType.name,
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller: email,
+                        validator: (value) {
+                                return Validator()
+                                    .validateEmail(value!);
+                              },
+                        isPassword: false,
+                        text: "Email Address",
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomDropDownWidget(
+                              item: telList,
+                              hint: "Tel",
+                              suffixIcon: dropDownIcon),
+                          SizedBox(
+                            width: 30.0.w,
+                          ),
+                          Expanded(
+                            child: BorderTextFieldWidget(
+                              controller: phoneNumber,
+                              validator: (value) {
+                                return Validator()
+                                    .validateNumberField(value!, );
+                              },
+                              isPassword: false,
+                              text: "Phone number",
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller: country,
+                        validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "Country of residence");
+                              },
+                        isPassword: false,
+                        text: "Country of residence",
+                        keyboardType: TextInputType.name,
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller: city,
+                        validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "City");
+                              },
+                        isPassword: false,
+                        text: "City",
+                        keyboardType: TextInputType.name,
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller: primcelebCategory,
+                        validator: (value) {
+                                return Validator()
+                                    .validateEmptyField(value!, "Primary Celebrity Category");
+                              },
+                        isPassword: false,
+                        text: "Primary Celebrity Category",
+                        keyboardType: TextInputType.name,
+                        suffixIconWidget: Container(
+                          width: 5.0,
+                          padding: EdgeInsetsDirectional.only(end: 1.0),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: InkWell(
+                              onTap: () {
+                                primaryCelebBottomSheet(
+                                    context: context, size: size);
+                              },
+                              child: Center(
+                                child: SvgPicture.asset(
+                                  addIcon,
+                                  fit: BoxFit.scaleDown,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                    BorderTextFieldWidget(
-                      isPassword: true,
-                        onChanged: (value) {
-                          setState(() {
-                            capitalLetter = regExCapitalLetter.hasMatch(value);
-                            smallLetter = regExSmallLetter.hasMatch(value);
-                            specialCharcaters = regSpecialChar.hasMatch(value);
-                          });
-                        },
-                        text: "Password",
-                        keyboardType: TextInputType.visiblePassword),
-                    SizedBox(
-                      height: 16.0.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: AnimatedContainer(
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                      BorderTextFieldWidget(
+                        controller : password,
+                        validator: (value) {
+                                if(capitalLetter == false ||
+                                    smallLetter == false ||
+                                   
+                                    specialCharcaters == false ||
+                                    value!.length < 8) {
+                                  return "Password must contain at least 8 characters, one capital letter, one small letter, one number and one special character";
+                                }
+                              },
+                          isPassword: true,
+                          onChanged: (value) {
+                            setState(() {
+                              capitalLetter = regExCapitalLetter.hasMatch(value);
+                              smallLetter = regExSmallLetter.hasMatch(value);
+                              specialCharcaters = regSpecialChar.hasMatch(value);
+                            });
+                          },
+                          text: "Password",
+                          keyboardType: TextInputType.visiblePassword),
+                      SizedBox(
+                        height: 16.0.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: AnimatedContainer(
+                                //width: 93.0.w,
+                                //height: 25.0.h,
+                                decoration: BoxDecoration(
+                                  color: capitalLetter == true
+                                      ? greenColor.withOpacity(0.05)
+                                      : whiteColorShade2,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                duration: Duration(
+                                  seconds: 1,
+                                ),
+                                curve: Curves.easeIn,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.check,
+                                        size: 15,
+                                        color: capitalLetter == true
+                                            ? greenColor
+                                            : textColor,
+                                      ),
+                                      SizedBox(
+                                        width: 1.0.w,
+                                      ),
+                                      Text(
+                                        "Capital letters",
+                                        style: CustomTheme.smallestText(context)
+                                            .copyWith(
+                                          fontSize: 9.0.sp,
+                                          color: capitalLetter == true
+                                              ? greenColor
+                                              : textColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                          ),
+                          SizedBox(
+                            width: 5.0.w,
+                          ),
+                          Expanded(
+                            child: AnimatedContainer(
+                                //width: 93.0.w,
+                                //height: 25.0.h,
+                                decoration: BoxDecoration(
+                                  color: smallLetter == true
+                                      ? greenColor.withOpacity(0.05)
+                                      : whiteColorShade2,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                duration: Duration(
+                                  seconds: 1,
+                                ),
+                                curve: Curves.easeIn,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.check,
+                                        size: 15,
+                                        color: smallLetter == true
+                                            ? greenColor
+                                            : blackColor,
+                                      ),
+                                      SizedBox(
+                                        width: 1.0.w,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "Lowercase letters",
+                                          style: CustomTheme.smallestText(context)
+                                              .copyWith(
+                                            fontSize: 9.0.sp,
+                                            color: smallLetter == true
+                                                ? greenColor
+                                                : blackColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                          ),
+                          SizedBox(
+                            width: 5.0.w,
+                          ),
+                          Expanded(
+                            child: AnimatedContainer(
                               //width: 93.0.w,
                               //height: 25.0.h,
                               decoration: BoxDecoration(
-                                color: capitalLetter == true
+                                color: specialCharcaters == true
                                     ? greenColor.withOpacity(0.05)
                                     : whiteColorShade2,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                
                               duration: Duration(
                                 seconds: 1,
                               ),
                               curve: Curves.easeIn,
+                
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Row(
@@ -279,201 +430,109 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Icon(
                                       Icons.check,
                                       size: 15,
-                                      color: capitalLetter == true
+                                      color: specialCharcaters == true
                                           ? greenColor
-                                          : textColor,
+                                          : blackColor,
                                     ),
                                     SizedBox(
                                       width: 1.0.w,
                                     ),
                                     Text(
-                                      "Capital letters",
+                                      "Special Characters",
                                       style: CustomTheme.smallestText(context)
                                           .copyWith(
                                         fontSize: 9.0.sp,
-                                        color: capitalLetter == true
+                                        color: specialCharcaters == true
                                             ? greenColor
-                                            : textColor,
+                                            : blackColor,
                                       ),
                                     ),
                                   ],
                                 ),
-                              )),
-                        ),
-                        SizedBox(
-                          width: 5.0.w,
-                        ),
-                        Expanded(
-                          child: AnimatedContainer(
-                              //width: 93.0.w,
-                              //height: 25.0.h,
-                              decoration: BoxDecoration(
-                                color: smallLetter == true
-                                    ? greenColor.withOpacity(0.05)
-                                    : whiteColorShade2,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              duration: Duration(
-                                seconds: 1,
-                              ),
-                              curve: Curves.easeIn,
-                              child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.check,
-                                      size: 15,
-                                      color: smallLetter == true
-                                          ? greenColor
-                                          : blackColor,
-                                    ),
-                                    SizedBox(
-                                      width: 1.0.w,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        "Lowercase letters",
-                                        style: CustomTheme.smallestText(context)
-                                            .copyWith(
-                                          fontSize: 9.0.sp,
-                                          color: smallLetter == true
-                                              ? greenColor
-                                              : blackColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )),
-                        ),
-                        SizedBox(
-                          width: 5.0.w,
-                        ),
-                        Expanded(
-                          child: AnimatedContainer(
-                            //width: 93.0.w,
-                            //height: 25.0.h,
-                            decoration: BoxDecoration(
-                              color: specialCharcaters == true
-                                  ? greenColor.withOpacity(0.05)
-                                  : whiteColorShade2,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-
-                            duration: Duration(
-                              seconds: 1,
-                            ),
-                            curve: Curves.easeIn,
-
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    size: 15,
-                                    color: specialCharcaters == true
-                                        ? greenColor
-                                        : blackColor,
-                                  ),
-                                  SizedBox(
-                                    width: 1.0.w,
-                                  ),
-                                  Text(
-                                    "Special Characters",
-                                    style: CustomTheme.smallestText(context)
-                                        .copyWith(
-                                      fontSize: 9.0.sp,
-                                      color: specialCharcaters == true
-                                          ? greenColor
-                                          : blackColor,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 16.0.h,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "By creating an account you agree to Amaze's",
-                            style: CustomTheme.smallestText(context).copyWith(
-                              //fontSize: 9.0.sp,
-                              color: blackColor,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "\nTerms of Service and Privacy Policy",
-                                style:
-                                    CustomTheme.smallestText(context).copyWith(
-                                  //fontSize: 9.0.sp,
-                                  color: primaryColorShade2,
-                                ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16.0.h,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "By creating an account you agree to Amaze's",
+                              style: CustomTheme.smallestText(context).copyWith(
+                                //fontSize: 9.0.sp,
+                                color: blackColor,
                               ),
-                            ],
+                              children: [
+                                TextSpan(
+                                  text: "\nTerms of Service and Privacy Policy",
+                                  style:
+                                      CustomTheme.smallestText(context).copyWith(
+                                    //fontSize: 9.0.sp,
+                                    color: primaryColorShade2,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20.0.h,
-                    ),
-                    Consumer(
-                      builder:
-                          (BuildContext context, WidgetRef ref, Widget? child) {
-                        return CustomIconButton(
-                          title: "Continue",
-                          icon: emailIcon,
-                          onPressed: () async {
-                            ref
-                                .watch(loaderStateProvider.notifier)
-                                .setState(LoaderStatus.LOADING);
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoaderScreen(
-                                  child: CreateAnAccount(),
+                      SizedBox(
+                        height: 20.0.h,
+                      ),
+                      Consumer(
+                        builder:
+                            (BuildContext context, WidgetRef ref, Widget? child) {
+                          return CustomIconButton(
+                            title: "Continue",
+                            icon: emailIcon,
+                            onPressed: () async {
+                              if(_formKey.currentState!.validate()){
+                                ref
+                                  .watch(loaderStateProvider.notifier)
+                                  .setState(LoaderStatus.LOADING);
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoaderScreen(
+                                    child: CreateAnAccount(),
+                                  ),
                                 ),
-                              ),
-                            ).timeout(Duration(seconds: 1)).whenComplete(() => 
-                            ref.watch(signUpProvider.notifier).signUp(
-                                "firstName",
-                                "lastName",
-                                "email@y.com",
-                                "+2349075545403",
-                                "companyName",
-                                0,
-                                "celebrityAKA",
-                                "jobTitle",
-                                "userType",
-                                "location",
-                                "password",
-                                "firebaseToken",
-                                context),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    SizedBox(
-                      height: 30.0.h,
-                    ),
-                  ],
+                              ).timeout(Duration(seconds: 1)).whenComplete(
+                                    () => ref
+                                        .watch(signUpProvider.notifier)
+                                        .signUp(
+                                            firstName!.text,
+                                            lastName!.text,
+                                            email!.text,
+                                            "+23${phoneNumber!.text}",
+                                            "companyName",
+                                            0,
+                                            celebrity!.text,
+                                            "jobTitle",
+                                            "userType",
+                                            "location",
+                                            password!.text,
+                                            "firebaseToken",
+                                            context),
+                                  );
+                              }
+                              
+                            },
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: 30.0.h,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

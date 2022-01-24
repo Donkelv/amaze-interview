@@ -1,6 +1,7 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/core/controller/createAccountController.dart';
+import 'package:amaze/core/validator/validator.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
 import 'package:amaze/views/widgets/customButton.dart';
@@ -76,6 +77,10 @@ class _CreateAccountScreenFiveState extends State<CreateAccountScreenFive> {
                 height: 30.0.h,
               ),
               BorderTextFieldWidget(
+                validator: (value) {
+                              return Validator()
+                                  .validateEmptyField(value!, "Account number");
+                            },
                 isPassword: false,
                  keyboardType: TextInputType.number,
                  hintText: "Enter account number",
