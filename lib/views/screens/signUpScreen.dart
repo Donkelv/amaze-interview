@@ -4,7 +4,7 @@ import 'package:amaze/constants/telConst.dart';
 import 'package:amaze/core/controller/loaderState.dart';
 import 'package:amaze/core/controller/signUpController.dart';
 import 'package:amaze/utils/theme.dart';
-import 'package:amaze/views/routes/routeGenerator.dart';
+
 import 'package:amaze/views/screens/createAnAccount.dart';
 import 'package:amaze/views/screens/loader.dart';
 import 'package:amaze/views/widgets/borderTextFieldWidget.dart';
@@ -132,6 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Expanded(
                           child: BorderTextFieldWidget(
+                            isPassword: false,
                             text: "First name",
                             keyboardType: TextInputType.name,
                           ),
@@ -141,6 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Expanded(
                           child: BorderTextFieldWidget(
+                            isPassword: false,
                             text: "Last name",
                             keyboardType: TextInputType.name,
                           ),
@@ -151,6 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: false,
                       text: "Celebrity AKA",
                       keyboardType: TextInputType.name,
                     ),
@@ -158,6 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: false,
                       text: "Email Address",
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -177,6 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Expanded(
                           child: BorderTextFieldWidget(
+                            isPassword: false,
                             text: "Phone number",
                             keyboardType: TextInputType.number,
                           ),
@@ -187,6 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: false,
                       text: "Country of residence",
                       keyboardType: TextInputType.name,
                     ),
@@ -194,6 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: false,
                       text: "City",
                       keyboardType: TextInputType.name,
                     ),
@@ -201,6 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: false,
                       text: "Primary Celebrity Category",
                       keyboardType: TextInputType.name,
                       suffixIconWidget: Container(
@@ -231,6 +239,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 30.0.h,
                     ),
                     BorderTextFieldWidget(
+                      isPassword: true,
                         onChanged: (value) {
                           setState(() {
                             capitalLetter = regExCapitalLetter.hasMatch(value);

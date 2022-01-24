@@ -16,8 +16,9 @@ class BorderTextFieldWidget extends StatelessWidget {
   final Function(String)? onChanged;
   final String? hintText;
   final Widget? suffixIconWidget;
+  final bool? isPassword;
 
-  const BorderTextFieldWidget({Key? key,  this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged, this.hintText, this.suffixIconWidget})
+  const BorderTextFieldWidget({Key? key,  this.text, this.controller, required this.keyboardType, this.prefixIcon, this.suffixIcon, this.onPressed, this.onChanged, this.hintText, this.suffixIconWidget, required this.isPassword})
       : super(key: key);
 
   @override
@@ -25,6 +26,7 @@ class BorderTextFieldWidget extends StatelessWidget {
     return TextFormField(
       keyboardType: keyboardType,
       controller: controller,
+      obscureText: isPassword ?? false,
       //autofocus: true,
       cursorColor: primaryColorShade2,
       onChanged: onChanged == null ? null : (value) => onChanged!(value),

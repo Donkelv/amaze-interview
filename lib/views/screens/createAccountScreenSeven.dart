@@ -59,6 +59,7 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                isPassword: false,
                 keyboardType: TextInputType.name,
               ),
               SizedBox(
@@ -73,6 +74,7 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: instagramIcon,
               ),
@@ -88,6 +90,7 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: twitterIcon,
               ),
@@ -103,6 +106,7 @@ class CreateAccountScreenSeven extends StatelessWidget {
                 height: 5.0.h,
               ),
               BorderTextFieldWidget(
+                isPassword: false,
                 keyboardType: TextInputType.name,
                 prefixIcon: facebookIcon,
               ),

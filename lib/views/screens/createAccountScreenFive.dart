@@ -76,6 +76,7 @@ class _CreateAccountScreenFiveState extends State<CreateAccountScreenFive> {
                 height: 30.0.h,
               ),
               BorderTextFieldWidget(
+                isPassword: false,
                  keyboardType: TextInputType.number,
                  hintText: "Enter account number",
                 
