@@ -1,4 +1,5 @@
 import 'package:amaze/constants/colorConst.dart';
+import 'package:amaze/core/controller/celebNotifier.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +36,7 @@ class _CategoryGridViewBuilderState extends State<CategoryGridViewBuilder> {
                   setState(() {
                     currentSelectedIndex = index;
                   });
-                  ref.watch(provider)
+                  ref.watch(celebProvider.notifier).setCeleb("Category ${currentSelectedIndex! + 1}");
                 },
                 selected: currentSelectedIndex == index,
               );

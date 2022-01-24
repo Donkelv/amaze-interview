@@ -67,17 +67,19 @@ void primaryCelebBottomSheet(
                 height: 31.0.h,
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 25.0.w),
+                padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                 child: CategoryGridViewBuilder(),
               ),
               SizedBox(
                 height: 30.0.h,
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20.0.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                 child: CustomButton(
                   text: "Select Category",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   color: primaryColorShade2,
                 ),
               )

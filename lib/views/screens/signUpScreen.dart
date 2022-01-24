@@ -1,6 +1,7 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/constants/telConst.dart';
+import 'package:amaze/core/controller/celebrityController.dart';
 import 'package:amaze/core/controller/loaderState.dart';
 import 'package:amaze/core/controller/signUpController.dart';
 import 'package:amaze/core/validator/validator.dart';
@@ -245,38 +246,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 30.0.h,
                       ),
-                      BorderTextFieldWidget(
-                        controller: primcelebCategory,
-                        validator: (value) {
-                                return Validator()
-                                    .validateEmptyField(value!, "Primary Celebrity Category");
-                              },
-                        isPassword: false,
-                        text: "Primary Celebrity Category",
-                        keyboardType: TextInputType.name,
-                        suffixIconWidget: Container(
-                          width: 5.0,
-                          padding: EdgeInsetsDirectional.only(end: 1.0),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Material(
-                            type: MaterialType.transparency,
-                            child: InkWell(
-                              onTap: () {
-                                primaryCelebBottomSheet(
-                                    context: context, size: size);
-                              },
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  addIcon,
-                                  fit: BoxFit.scaleDown,
+                      Consumer(
+                        builder: (BuildContext context, WidgetRef ref, Widget? child) { 
+                          return BorderTextFieldWidget(
+                          controller: ref.watch(celebrityControllerProvider),
+                          validator: (value) {
+                                  return Validator()
+                                      .validateEmptyField(value!, "Primary Celebrity Category");
+                                },
+                          isPassword: false,
+                          text: "Primary Celebrity Category",
+                          keyboardType: TextInputType.name,
+                          suffixIconWidget: Container(
+                            width: 5.0,
+                            padding: EdgeInsetsDirectional.only(end: 1.0),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Material(
+                              type: MaterialType.transparency,
+                              child: InkWell(
+                                onTap: () {
+                                  primaryCelebBottomSheet(
+                                      context: context, size: size);
+                                },
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    addIcon,
+                                    fit: BoxFit.scaleDown,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
+                        );
+                         },
+                        
                       ),
                       SizedBox(
                         height: 30.0.h,
