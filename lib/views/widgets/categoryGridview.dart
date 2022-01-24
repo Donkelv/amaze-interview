@@ -2,6 +2,7 @@ import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CategoryGridViewBuilder extends StatefulWidget {
   CategoryGridViewBuilder({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _CategoryGridViewBuilderState extends State<CategoryGridViewBuilder> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-  //padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+        //padding: EdgeInsets.symmetric(horizontal: 20.0.w),
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -26,15 +27,19 @@ class _CategoryGridViewBuilderState extends State<CategoryGridViewBuilder> {
             mainAxisSpacing: 20.0.h),
         itemCount: 12,
         itemBuilder: (context, index) {
-          return CustomCategoryWidget(
-            index: index,
-            onPressed: () {
-              setState(() {
-                currentSelectedIndex = index;
-              
-              });
+          return Consumer(
+            builder: (BuildContext context, WidgetRef ref, Widget? child) {
+              return CustomCategoryWidget(
+                index: index,
+                onPressed: () {
+                  setState(() {
+                    currentSelectedIndex = index;
+                  });
+                  ref.watch(provider)
+                },
+                selected: currentSelectedIndex == index,
+              );
             },
-            selected: currentSelectedIndex == index,
           );
         });
   }
@@ -57,8 +62,10 @@ class CustomCategoryWidget extends StatelessWidget {
       height: 40.0.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        border: Border.all(color: selected! ? primaryColorShade2 : textColor2, width: 1.0),
-        color: selected! ? primaryColorShade2.withOpacity(0.05) : whiteColorShade1,
+        border: Border.all(
+            color: selected! ? primaryColorShade2 : textColor2, width: 1.0),
+        color:
+            selected! ? primaryColorShade2.withOpacity(0.05) : whiteColorShade1,
       ),
       duration: Duration(milliseconds: 150),
       curve: Curves.easeIn,
