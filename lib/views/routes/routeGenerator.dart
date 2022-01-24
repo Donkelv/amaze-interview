@@ -1,3 +1,4 @@
+import 'package:amaze/views/screens/bottomAppBarScreen.dart';
 import 'package:amaze/views/screens/createAnAccount.dart';
 import 'package:amaze/views/screens/signUpScreen.dart';
 import 'package:amaze/views/screens/successScreen.dart';
@@ -10,6 +11,7 @@ class RouteGenerator {
   static const String signUp = "/signUp";
   static const String createAccount = "/createAccount";
   static const String success = "/succesScreen";
+  static const String bottomAppBar = "/bottomAppBar";
   
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -22,6 +24,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const CreateAnAccount());
       case success:
         return MaterialPageRoute(builder: (_) => const SuccessScreen());
+      case bottomAppBar:
+        return MaterialPageRoute(builder: (_) => const BottomAppBarScreen());
       
     }
   }

@@ -1,13 +1,13 @@
 import 'package:amaze/constants/colorConst.dart';
 import 'package:amaze/constants/imageConst.dart';
 import 'package:amaze/utils/theme.dart';
+import 'package:amaze/views/routes/routeGenerator.dart';
 import 'package:amaze/views/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({ Key? key }) : super(key: key);
+  const SuccessScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SuccessScreen extends StatelessWidget {
       width: size.width,
       height: size.height,
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 55.0.w),
+        padding: EdgeInsets.symmetric(horizontal: 55.0.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,24 +26,30 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(
               height: 25.0.h,
             ),
-            Text("Amaze-ing!!!", style: CustomTheme.mediumText(context),),
+            Text(
+              "Amaze-ing!!!",
+              style: CustomTheme.mediumText(context),
+            ),
             SizedBox(
               height: 5.0.h,
             ),
-            Text("Your application is undergoing review. You will receive a notification once the review is complete.", 
-            textAlign: TextAlign.center,
-            style: CustomTheme.normalText(context),),
+            Text(
+              "Your application is undergoing review. You will receive a notification once the review is complete.",
+              textAlign: TextAlign.center,
+              style: CustomTheme.normalText(context),
+            ),
             SizedBox(
               height: 15.0.h,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0.w),
               child: CustomButton(
-                color: primaryColorShade2, 
-                text: "Continue", 
-                onPressed: (){
-
-                },),
+                color: primaryColorShade2,
+                text: "Continue",
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteGenerator.bottomAppBar);
+                },
+              ),
             )
           ],
         ),

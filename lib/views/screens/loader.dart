@@ -27,7 +27,7 @@ class LoaderScreen extends ConsumerWidget {
         
         ),
       ) 
-      : ref.watch(loaderStateProvider) == LoaderStatus.ERROR ?
+      : ref.watch(loaderStateProvider) == LoaderStatus.SUCCESS ?
       Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +41,7 @@ class LoaderScreen extends ConsumerWidget {
           ]
         )
       )
-      : ref.watch(loaderStateProvider) == LoaderStatus.SUCCESS ?
+      : ref.watch(loaderStateProvider) == LoaderStatus.ERROR ?
       child
       :
       Container(),

@@ -39,10 +39,22 @@ class _BottomAppBarScreenState extends State<BottomAppBarScreen> {
         children: bottomAppScreens!.toList(),
       ),
       bottomNavigationBar: Container(
+        height: 79.0.h,
         width: size.width,
-        color: whiteColor,
+        //color: whiteColor,
+        decoration: BoxDecoration(
+          color: whiteColor,
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFFE5E5E5),
+              offset: Offset(0, 0),
+              blurRadius: 30.0,
+            ),
+          ],
+        ),
+        
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.0.w),
+          padding: EdgeInsets.symmetric(horizontal: 35.0.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,7 +64,7 @@ class _BottomAppBarScreenState extends State<BottomAppBarScreen> {
                 type: MaterialType.transparency,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
-                  splashColor: Color.fromRGBO(0, 0, 0, 0.5),
+                  //splashColor: Color.fromRGBO(0, 0, 0, 0.5),
                       onTap: () {
                         setState(() {
                           _pageController!.jumpToPage(i);
@@ -62,24 +74,25 @@ class _BottomAppBarScreenState extends State<BottomAppBarScreen> {
                   ?
                   Container(
                               decoration: BoxDecoration(
-                                color: blackColor,
+                                //color: blackColor,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center, 
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                                   crossAxisAlignment: CrossAxisAlignment.center,                                 
                                   children: [
                                     SvgPicture.asset(
                                       bottomBarAssets![i].svg!,
                                       color: primaryColorShade2,
-                                      fit: BoxFit.scaleDown,
+                                      //fit: BoxFit.scaleDown,
                                     ),
+                                    
+                                    Text(bottomBarAssets![i].text!, style: CustomTheme.smallText(context).copyWith(color: primaryColorShade2),),
                                     SizedBox(
-                                      height: 12.0.h,
+                                      height: 2.0.h,
                                     ),
-                                    Text(bottomBarAssets![i].text!, style: CustomTheme.smallestText(context).copyWith(color: primaryColorShade2),),
 
                                   ],
                                 ),
@@ -88,24 +101,28 @@ class _BottomAppBarScreenState extends State<BottomAppBarScreen> {
                             :
                             Container(
                               decoration: BoxDecoration(
-                                color: blackColor,
+                                //color: blackColor,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center, 
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                                   crossAxisAlignment: CrossAxisAlignment.center,                                 
                                   children: [
                                     SvgPicture.asset(
                                       bottomBarAssets![i].svg!,
                                       color: whiteColorShade2,
-                                      fit: BoxFit.scaleDown,
+                                     // height: ,
+                                      //fit: BoxFit.scaleDown,
                                     ),
+                                    // SizedBox(
+                                    //   height: 12.0.h,
+                                    // ),
+                                    Text(bottomBarAssets![i].text!, style: CustomTheme.smallText(context).copyWith(color: whiteColorShade2),),
                                     SizedBox(
-                                      height: 12.0.h,
+                                      height: 2.0.h,
                                     ),
-                                    Text(bottomBarAssets![i].text!, style: CustomTheme.smallestText(context).copyWith(color: whiteColorShade2),),
 
                                   ],
                                 ),
