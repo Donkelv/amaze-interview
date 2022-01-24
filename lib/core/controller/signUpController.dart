@@ -41,8 +41,7 @@ class SignUpNotifier extends StateNotifier<dynamic> {
       "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
       "Accept-Encoding": "gzip",
       
-      "Host": "amaze-staging.us-east-2.elasticbeanstalk.com",
-      "User-Agent": "Dart/2.14 (dart:io)",
+    
     }, body: {
       "firstName": firstName,
       "lastName": lastName,
