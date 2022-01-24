@@ -1,10 +1,9 @@
 import 'package:amaze/constants/imageConst.dart';
+import 'package:amaze/views/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 List<Widget>? bottomAppScreens = [
-  Center(
-    child: Text("Home"),
-  ),
+  HomeScreen(),
   Center(
     child: Text("Request"),
   ),

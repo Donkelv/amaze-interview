@@ -6,6 +6,7 @@ const String donJazzy = BaseImagePath + "donJazzy.png";
 const String signUp = BaseImagePath + "signUp.png";
 const String primaryCategory = BaseImagePath + "primaryCategory.png";
 const String successIcon = BaseImagePath + "successIcon.png";
+const String emptyHome = BaseImagePath + "emptyHome.png";
 
 
 //svg Images
