@@ -32,3 +32,7 @@ const String instagramIcon = BaseSvgPath + "instagram.svg";
 const String facebookIcon = BaseSvgPath + "facebook.svg";
 const String twitterIcon = BaseSvgPath + "twitter.svg";
 const String successIconSvg = BaseSvgPath + "success.svg";
+const String homeIcon   = BaseSvgPath + "homeIcon.svg";
+const String notification = BaseSvgPath + "notification.svg";
+const String profile = BaseSvgPath + "profile.svg";
+const String request = BaseSvgPath + "request.svg";
