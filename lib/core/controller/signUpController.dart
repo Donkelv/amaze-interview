@@ -40,7 +40,7 @@ class SignUpNotifier extends StateNotifier<dynamic> {
     var response = await http.post(finalUrl, headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
       "Accept-Encoding": "gzip",
-      "Content-Length": "263",
+      
       "Host": "amaze-staging.us-east-2.elasticbeanstalk.com",
       "User-Agent": "Dart/2.14 (dart:io)",
     }, body: {
